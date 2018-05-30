@@ -1728,10 +1728,10 @@ public:
         \param stackCapacity    Optional initial capacity of stack in bytes.
         \param stackAllocator   Optional allocator for allocating memory for stack.
     */
-#if defined(ESCARGOT) && !COMPILER(MSVC)
-    __attribute__((__noinline__)) GenericDocument(Allocator* allocator = 0, size_t stackCapacity = kDefaultStackCapacity, StackAllocator* stackAllocator = 0) : 
+#if defined(ESCARGOT) && !defined(COMPILER_MSVC)
+    __attribute__((__noinline__)) GenericDocument(Allocator* allocator = 0, size_t stackCapacity = kDefaultStackCapacity, StackAllocator* stackAllocator = 0) :
 #else
-    GenericDocument(Allocator* allocator = 0, size_t stackCapacity = kDefaultStackCapacity, StackAllocator* stackAllocator = 0) : 
+    GenericDocument(Allocator* allocator = 0, size_t stackCapacity = kDefaultStackCapacity, StackAllocator* stackAllocator = 0) :
 #endif
         allocator_(allocator), ownAllocator_(0), stack_(stackAllocator, stackCapacity), parseResult_()
     {
